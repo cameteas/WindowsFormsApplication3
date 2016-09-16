@@ -39,7 +39,7 @@ namespace WindowsFormsApplication3
 
         private void Play_MouseEnter_1(object sender, EventArgs e)
         {
-            //button fade
+            //button fade in
             for (int i = 0; i < 254; i++)
             {
                 this.Refresh();
@@ -51,7 +51,7 @@ namespace WindowsFormsApplication3
 
         private void Play_MouseLeave_1(object sender, EventArgs e)
         {
-            //button fade in
+            //button fade out
             int a = 0;
             string b = "";
             for (int i = 254; i > 5; i--)
