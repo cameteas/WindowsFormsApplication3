@@ -28,11 +28,15 @@ namespace WindowsFormsApplication3
             //declare variables
             string[] num = new string[] { "3", "2", "1" };
             Font drawFont = new Font("Comic Sans MS", 16, FontStyle.Bold);
+            Font C = new Font("Comic Sans MS", 60, FontStyle.Regular);
+            Font CMA = new Font("Comic Sans MS", 8, FontStyle.Regular);
             SolidBrush drawBrush = new SolidBrush(Color.FromArgb(255, 0, 255, 0));
+            SolidBrush ramsBrush = new SolidBrush(Color.Red);
+            SolidBrush CBrush = new SolidBrush(Color.Black);
             Graphics formGraphics = this.CreateGraphics();
             Pen drawPen = new Pen(Color.Red, 10);
 
-            //
+
             Play.Width = 0;
             Title.Dispose();
             BackColor = Color.Black;
@@ -44,6 +48,19 @@ namespace WindowsFormsApplication3
             }
             formGraphics.DrawString("Go", drawFont, drawBrush, 120, 100);
             Thread.Sleep(1000);
+            formGraphics.DrawEllipse(drawPen, 40, 25, 200, 100);
+            formGraphics.FillEllipse(ramsBrush, 40, 25, 200, 100);
+            formGraphics.DrawString("C", C, CBrush, 90, 10);
+            formGraphics.DrawString("rams", drawFont, drawBrush, 118, 56);
+            formGraphics.TranslateTransform(250, 130);
+            formGraphics.RotateTransform(270);
+            formGraphics.DrawString("Central Rams Arcade", CMA, drawBrush, new Rectangle());
+            formGraphics.ResetTransform();
+            
+            Thread.Sleep(10000);
+
+
+
         }
 
         private void Play_MouseEnter_1(object sender, EventArgs e)
