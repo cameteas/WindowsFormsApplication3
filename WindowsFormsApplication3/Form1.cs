@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Media;
 
 namespace WindowsFormsApplication3
 {
@@ -33,9 +34,10 @@ namespace WindowsFormsApplication3
             SolidBrush drawBrush = new SolidBrush(Color.FromArgb(255, 0, 255, 0));
             SolidBrush ramsBrush = new SolidBrush(Color.Red);
             SolidBrush CBrush = new SolidBrush(Color.Black);
-            Graphics formGraphics = this.CreateGraphics();
+            SolidBrush pacBrush = new SolidBrush(Color.Yellow);
             Pen drawPen = new Pen(Color.Red, 10);
-
+            Pen pacPen = new Pen(Color.Yellow, 10);
+            Graphics formGraphics = this.CreateGraphics();
 
             Play.Width = 0;
             Title.Dispose();
@@ -56,9 +58,31 @@ namespace WindowsFormsApplication3
             formGraphics.RotateTransform(270);
             formGraphics.DrawString("Central Rams Arcade", CMA, drawBrush, new Rectangle());
             formGraphics.ResetTransform();
-            
-            Thread.Sleep(10000);
+            SoundPlayer player = new SoundPlayer(Properties.Resources.waka);
+            player.Play();
+            Thread.Sleep(6000);
+            formGraphics.Clear(Color.Black);
+            formGraphics.Dispose();
+            for (int p = 0; p < 100; p++)
+            {
+                int q = 300;
+                if (q == 300)
+                {
+                    q = q + 60;
+                }
+                else if (q == 360)
+                {
+                    q = q - 60;
+                }
+                Graphics pacman = this.CreateGraphics();
+                pacman.DrawPie(pacPen, 20, 20, 50, 50, 30, q);
+                pacman.FillPie(pacBrush, 20, 20, 50, 50, 30, q);
+                Thread.Sleep(2000);
+                pacman.Clear(Color.Black);
 
+                //pacman.Clear(Color.Black)
+
+            }
 
 
         }
